@@ -1,7 +1,14 @@
-def add_post(comment="",image="")
-  visit('/')
+def add_post(comment="")
+  visit('/posts/new')
   fill_in 'Comment', with: "#{comment}"
-  fill_in 'Image', with: "#{image}"
+  attach_file 'Picture', Rails.root.join('spec/images/trollface.png')
   click_on('Add')
   expect(page).to have_content("#{comment}")
+end
+
+def add_comment(comment="")
+	visit('/')
+	fill_in 'Comment', with: "#{comment}"
+	click_on('Add Comment')
+	expect(page).to have_content("#{comment}")
 end

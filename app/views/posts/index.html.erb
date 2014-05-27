@@ -1,20 +1,29 @@
 <% if @posts.any?  %>
+
 	<% @posts.each do |post| %>
 		<br><%= post.comment %><br>
-		<%= post.image %><br>
+		<%= post.image %>
+<!-- 		<img class="uploaded-pic" src="#{picture}">
+ -->		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
+			<% if @comments.any? %>
+				<br><% post.comments.each do |comment| %>
+					<%= comment.comment %>
+				<% end %><br>
+			<% else %>
+				No Comments
+			<% end %>			
+		<%= form_for [post, @comment] do |f| %>
+
+			<%= f.label :comment %>
+			<%= f.text_field :comment %>
+
+			<%= f.submit 'Add Comment' %>
+		<% end %>
+			
 	<% end %>
+
 <% else %>
 No Posts yet!<br>
 <% end %>
 
 
-<%= form_for @post do |f| %>
-
-	<%= f.label :image %>
-	<%= f.text_field :image %>
-
-	<%= f.label :comment %>
-	<%= f.text_field :comment %>
-
-	<%= f.submit 'Add' %>
-<% end %>
