@@ -1,7 +1,7 @@
 def add_post(comment="")
   visit('/posts/new')
   fill_in 'Comment', with: "#{comment}"
-  attach_file 'Picture', Rails.root.join('spec/images/trollface.png')
+  attach_file 'Picture', Rails.root.join('public/images/trollface.png')
   click_on('Add')
   expect(page).to have_content("#{comment}")
 end

@@ -14,6 +14,7 @@ Technologies used
 - Rspec
 - Capybara
 - [Devise]
+- [Paperclip]
 
 How to run it
 ----
@@ -37,3 +38,4 @@ Pairing Partners
 
 [Sroop]:https://github.com/sroop
 [Devise]:https://github.com/plataformatec/devise
+[Paperclip]:https://github.com/thoughtbot/paperclip

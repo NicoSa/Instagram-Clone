@@ -20,6 +20,6 @@ describe 'Posts' do
 	it 'can add another post' do
 		add_post('Where ist mein Chitter?')
 		expect(page).to have_css('img.uploaded-pic')
-		#expect(page.find('img.uploaded-pic')['src']).to have_content('/system/posts/pictures/000/000/007/medium/trollface.png?1401215809')
+		expect(page.find('img.uploaded-pic')['src']).to have_content('trollface.png')
 	end
 end
