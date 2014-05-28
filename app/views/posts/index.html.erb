@@ -22,8 +22,10 @@
 			<% if post.user == current_user %>
 			<%= link_to "Delete", post_path(post), method: :delete %>
 			<% end %>
-			<button>like</button>
-			Liked by: alex@a.com			
+			<%= link_to "Like", post_likes_path(post), method: :post%>
+			<% post.likes.each do |like| %>
+			Liked by: <%= like.user.email %> 			
+			<% end %>
 		<%= form_for [post, @comment] do |f| %>
 
 			<%= f.label :comment %>

@@ -25,12 +25,6 @@ describe 'Posts' do
 		expect(page.find('img.uploaded-pic')['src']).to have_content('trollface.png')
 	end
 
-	it 'can be liked' do
-		add_post('Hooray')
-		click_on('like')
-		expect(page).to have_content('Liked by: alex@a.com ')
-	end
-
 	it 'can be deleted' do
 		add_post('Look at this beautiful trollface')
 		click_on('Delete')
