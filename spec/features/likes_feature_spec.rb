@@ -14,4 +14,10 @@ describe 'Likes' do
     expect(page).to have_content('Liked by: nico@nicosaueressig.de ')
   end
 
+  it 'doesn´t die when you log out' do
+  	logout
+  	visit('/')
+  	expect(page).to have_content('Login')
+  end
+
 end
