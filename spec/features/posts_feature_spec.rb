@@ -3,8 +3,10 @@ require 'spec_helper'
 describe 'Posts' do
 
 	before do
-      user = User.create(email: 'alex@a.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa')
-      login_as user
+      nico = User.create(email: 'nico@nicosaueressig.de', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa')
+      login_as nico
+      @sroop = User.create(email: 'sroop@sroop.com', password: 'bbbbbbbb', password_confirmation: 'bbbbbbbb')
+
   	end
 
 	it 'shows no posts' do
@@ -21,5 +23,25 @@ describe 'Posts' do
 		add_post('Where ist mein Chitter?')
 		expect(page).to have_css('img.uploaded-pic')
 		expect(page.find('img.uploaded-pic')['src']).to have_content('trollface.png')
+	end
+
+	it 'can be liked' do
+		add_post('Hooray')
+		click_on('like')
+		expect(page).to have_content('Liked by: alex@a.com ')
+	end
+
+	it 'can be deleted' do
+		add_post('Look at this beautiful trollface')
+		click_on('Delete')
+		expect(page).not_to have_content('Look at this beautiful trollface')
+	end
+
+	it 'can only be deleted by its poster' do
+		add_post('Look at this beautiful trollface')
+		logout
+		login_as @sroop
+		click_on('Delete')
+		expect(page).to have_content('Look at this beautiful trollface')
 	end
 end
