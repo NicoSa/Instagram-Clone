@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])     
     @post.destroy
+    flash[:notice] = 'Successfully deleted'
     rescue ActiveRecord::RecordNotFound
         flash[:notice] = "can´t touch this, nanana"
     ensure

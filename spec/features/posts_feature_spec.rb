@@ -41,7 +41,7 @@ describe 'Posts' do
 		add_post('Look at this beautiful trollface')
 		logout
 		login_as @sroop
-		click_on('Delete')
-		expect(page).to have_content('can´t touch this, nanana')
+		visit ("/")
+		expect(page).to_not have_content('can´t touch this, nanana')
 	end
 end
