@@ -42,6 +42,6 @@ describe 'Posts' do
 		logout
 		login_as @sroop
 		click_on('Delete')
-		expect(page).to have_content('Look at this beautiful trollface')
+		expect(page).to have_content('can´t touch this, nanana')
 	end
 end
