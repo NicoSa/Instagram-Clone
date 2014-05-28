@@ -29,8 +29,7 @@ gem 'spring',        group: :development
 gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'aws-sdk'
-gem 'devise'
-
+	
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
