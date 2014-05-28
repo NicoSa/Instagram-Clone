@@ -19,7 +19,9 @@
 			<% else %>
 				No Comments
 			<% end %>
+			<% if post.user == current_user %>
 			<%= link_to "Delete", post_path(post), method: :delete %>
+			<% end %>
 			<button>like</button>
 			Liked by: alex@a.com			
 		<%= form_for [post, @comment] do |f| %>
