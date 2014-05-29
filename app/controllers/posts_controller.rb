@@ -13,19 +13,19 @@ class PostsController < ApplicationController
   end
 
   def create
-	@post = Post.new(params[:post].permit(:picture, :comment))
-  @post.user = current_user
-	@post.save
+    @post = Post.new(params[:post].permit(:picture, :comment))
+    @post.user = current_user
+    @post.save
     redirect_to('/posts')
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])     
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     flash[:notice] = 'Successfully deleted'
-    rescue ActiveRecord::RecordNotFound
-        flash[:notice] = "can´t touch this, nanana"
-    ensure
-      redirect_to('/posts') 
+  rescue ActiveRecord::RecordNotFound
+    flash[:notice] = "can´t touch this, nanana"
+  ensure
+    redirect_to('/posts')
   end
 end
