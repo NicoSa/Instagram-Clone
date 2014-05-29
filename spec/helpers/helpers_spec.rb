@@ -16,9 +16,7 @@ end
 def add_post_with_tags(comment="",tags="")
   visit('/posts/new')
   fill_in 'Comment', with: "#{comment}"
-  fill_in 'Tags', with:
+  fill_in 'Tags', with: "#{tags}"
   attach_file 'Picture', Rails.root.join('public/images/trollface.png')
-
   click_on('Add')
-  expect(page).to have_content("#{comment}")
 end

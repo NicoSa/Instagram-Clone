@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = 'Successfully deleted'
   rescue ActiveRecord::RecordNotFound
-    flash[:notice] = "can´t touch this, nanana"
+    flash[:notice] = 'can´t touch this, nanana'
   ensure
     redirect_to('/posts')
   end
