@@ -15,6 +15,10 @@ Technologies used
 - Capybara
 - [Devise]
 - [Paperclip]
+- Amazon Web Services
+- Bootstrap
+- Git 
+- Heroku
 
 How to run it
 ----
