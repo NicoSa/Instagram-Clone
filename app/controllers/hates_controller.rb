@@ -1,16 +1,13 @@
-class LikesController < ApplicationController
-
-  def index
-    @likes = Like.all
-  end
+class HatesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @like = Like.new 
-    @post.likes << @like
-    @like.user = current_user
-    @like.save!
-    flash[:notice] = "Thanks for the like!"
+    @hate = Hate.new
+    @post.hates << @hate
+    # @hate = Hate.new(post: @post) alternative version of line 6
+    @hate.user = current_user
+    @hate.save!
+    flash[:notice] = "Thanks for the hate!"
   rescue ActiveRecord::RecordInvalid
     flash[:notice] = "Can´t touch this, also you need to be logged in!"
   rescue ActiveRecord::RecordNotFound
@@ -20,10 +17,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = current_user.likes.find(params[:id])
-    @like.destroy!
+  	@hate = current_user.hates.find(params[:id])
+    @hate.destroy!
   rescue ActiveRecord::RecordNotFound
-    flash[:notice] = "Can´t delete a like that is not yours!"
+    flash[:notice] = "Can´t delete a hate that is not yours!"
   ensure
     redirect_to('/')
   end

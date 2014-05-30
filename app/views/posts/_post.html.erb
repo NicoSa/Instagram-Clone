@@ -24,9 +24,21 @@
 			<% end %>
 	<% end %>
 
+	<% if user_signed_in? %>
+			<% if user_hates?(post) %>
+				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete %>
+			<% else %>
+				<%= link_to "Hate", post_hates_path(post), method: :post %>
+			<% end %>
+	<% end %>
+
 					Who liked this? 
 					<% post.likes.each do |like| %>
 						<%= like.user.email %> 			
+					<% end %>
+					Who hated this?
+					<% post.hates.each do |hate| %>
+						<%= hate.user.email %>
 					<% end %>
 		<%= form_for [post, @comment] do |f| %>
 
