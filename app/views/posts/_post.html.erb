@@ -15,8 +15,16 @@
 			<% if post.user == current_user || true %>
 			<%= link_to "Delete", post_path(post), method: :delete %>
 			<% end %>
+
+	<% if user_signed_in? %>
+			<% if user_likes?(post) %>
+			<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete %>
+			<% else %>
 			<%= link_to "Like", post_likes_path(post), method: :post%>
-					Liked by: 
+			<% end %>
+	<% end %>
+
+					Who liked this? 
 					<% post.likes.each do |like| %>
 						<%= like.user.email %> 			
 					<% end %>
