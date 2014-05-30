@@ -20,4 +20,11 @@ describe 'Likes' do
   	expect(page).to have_content('Login')
   end
 
+  it 'can´t be added to a post twice' do
+  	add_post('Hooray')
+  	click_on('Like')
+  	click_on('Like')
+  	expect(page).to_not have_content('Liked by: nico@nicosaueressig.de nico@nicosaueressig.de')
+  end
+  	
 end
