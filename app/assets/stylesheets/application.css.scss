@@ -35,7 +35,7 @@ body {
 }
 
 .panel.panel-default {
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.78);
 }
 
 .postingform {
@@ -52,6 +52,10 @@ body {
 }
 
 .container {
-			margin-bottom: 32px;
+	margin-bottom: 32px;
 
+}
+
+.tags-render {
+	color: red;
 }

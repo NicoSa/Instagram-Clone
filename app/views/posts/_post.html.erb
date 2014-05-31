@@ -7,7 +7,7 @@
    
 		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
 				<% post.tags.each do |tag| %>
-					<%= link_to tag.name, tag_path(tag) %>
+					<%= link_to tag.name, tag_path(tag), class:'tags-render' %>
 				<% end %>
 
 		<hr>
