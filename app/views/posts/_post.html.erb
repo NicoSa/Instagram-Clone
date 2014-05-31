@@ -1,50 +1,65 @@
-		<br><%= post.comment %><br>
+<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= post.comment %></h3>
+  </div>
+  <div class="panel-body">
+   
 		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
 				<% post.tags.each do |tag| %>
 					<%= link_to tag.name, tag_path(tag) %>
 				<% end %>
 
-			<% if @comments.any? %>
-				<br><% post.comments.each do |comment| %>
-					<%= comment.comment %>
-				<% end %><br>
-			<% else %>
-				No Comments
-			<% end %>
-				
-			<% if post.user == current_user || true %>
-			<%= link_to "Delete", post_path(post), method: :delete %>
-			<% end %>
-
+		<hr>
+			
 	<% if user_signed_in? %>
 			<% if user_likes?(post) %>
-			<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete %>
+			<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete, 	class:'btn btn-info' %>
 			<% else %>
-			<%= link_to "Like", post_likes_path(post), method: :post%>
+			<%= link_to "Like", post_likes_path(post), method: :post, class:'btn btn-info'%>
 			<% end %>
 	<% end %>
-
+	
 	<% if user_signed_in? %>
 			<% if user_hates?(post) %>
-				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete %>
+				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete, class:'btn btn-warning'%>
 			<% else %>
-				<%= link_to "Hate", post_hates_path(post), method: :post %>
+				<%= link_to "Hate", post_hates_path(post), method: :post, class:'btn btn-warning' %>
 			<% end %>
 	<% end %>
-
+	<hr>
 					Who liked this? 
 					<% post.likes.each do |like| %>
 						<%= like.user.email %> 			
 					<% end %>
+					<br>
 					Who hated this?
 					<% post.hates.each do |hate| %>
 						<%= hate.user.email %>
 					<% end %>
+					<hr>
+					<% if @comments.any? %>
+				<br><% post.comments.each do |comment| %>
+					<%= comment.comment %><br>
+				<% end %><br>
+			<% else %>
+				No Comments
+			<% end %>
+			
+				<hr>
 		<%= form_for [post, @comment] do |f| %>
 
 			<%= f.label :comment %>
 			<%= f.text_field :comment %>
 
-			<%= f.submit 'Add Comment' %>
+			<%= f.submit 'Post' %>
 		<% end %>
+		<hr>
+		<% if post.user == current_user || true %>
+			<%= link_to "Delete", post_path(post), method: :delete , class: 'btn btn-danger'%>
+			<% end %>
+  </div>
+</div>
+		
+</div>
 			

@@ -13,6 +13,45 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap';
+
 .uploaded-pic {
  max-width: 300px;
+}
+
+body {
+	background: image-url('19.jpg');
+}
+
+.jumbotron {
+	background: image-url('IMG_0985.JPG');
+
+	.container {
+		background: rgba(255, 255, 255, 0.85);
+		padding: 30px 50px;
+		border-radius: 20px;
+	}
+}
+
+.panel.panel-default {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.postingform {
+	background: rgba(255, 255, 255, 0.85);
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+	background: transparent;
+	border: transparent;	
+}
+
+.navbar-brand {
+	display: none;	
+}
+
+.container {
+			margin-bottom: 32px;
+
 }

@@ -35,7 +35,7 @@ describe 'Hate' do
   	expect(page).to_not have_content('Who hated this? nico@nicosaueressig.de')
   end
 
-  it 'can only be unHated by the Hater' do
+  it 'can only be unhated by the Hater' do
   	add_post('DIIIIE')
   	click_on('Hate')
   	logout
