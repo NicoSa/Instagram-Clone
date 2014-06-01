@@ -32,8 +32,8 @@ $(document).ready(function() {
         return false;
 
     });
-    // $('.unlike').click(function() {
-    //     console.log('Hi');
-    //     return false;
-    // });
+    $('body').on('click', '.unlike', function() {
+        console.log('Hi');
+        return false;
+    });
 });
