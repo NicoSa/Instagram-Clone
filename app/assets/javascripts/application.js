@@ -15,12 +15,20 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+//= require mustache
 
 $(document).ready(function() {
     $('.like').click(function() {
-        console.log(this);
-        $.post($(this).attr('href'), $(this).serialize(), function() {
+        $.post($(this).attr('href'), $(this).serialize(), function(response) {
+            console.log(response);
 
+            var targetId = response.post
+            var currentPost = $('.col-md-4[data-id=' + targetId + ']')
+
+            var template = $('#likes-template').html();
+
+            currentPost.find('.likes').append(response.user + ", ");
+            $('.like').text('.unlike');
         }, 'json');
         return false;
     });

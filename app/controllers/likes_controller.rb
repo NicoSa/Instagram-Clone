@@ -16,7 +16,11 @@ class LikesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Record has been deleted already"
   ensure
-    redirect_to('/posts')
+    if @like.save!
+      render 'create', formats: [:json]
+    else
+      redirect_to('/')
+    end
   end
 
   def destroy
