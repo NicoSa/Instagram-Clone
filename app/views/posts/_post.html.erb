@@ -14,17 +14,17 @@
 			
 	<% if user_signed_in? %>
 			<% if user_likes?(post) %>
-			<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete, 	class:'btn btn-info' %>
+				<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete, 	class:'btn btn-info unlike' %>
 			<% else %>
-			<%= link_to "Like", post_likes_path(post), method: :post, class:'btn btn-info'%>
+				<%= link_to "Like", post_likes_path(post), method: :post, class:'btn btn-info like'%>
 			<% end %>
 	<% end %>
 	
 	<% if user_signed_in? %>
 			<% if user_hates?(post) %>
-				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete, class:'btn btn-warning'%>
+				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete, class:'btn btn-warning unhate'%>
 			<% else %>
-				<%= link_to "Hate", post_hates_path(post), method: :post, class:'btn btn-warning' %>
+				<%= link_to "Hate", post_hates_path(post), method: :post, class:'btn btn-warning hate' %>
 			<% end %>
 	<% end %>
 	<hr>

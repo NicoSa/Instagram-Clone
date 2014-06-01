@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+    $('.like').click(function() {
+        console.log(this);
+        $.post($(this).attr('href'), $(this).serialize(), function() {
+
+        }, 'json');
+        return false;
+    });
+});
