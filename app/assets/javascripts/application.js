@@ -18,7 +18,7 @@
 //= require mustache
 
 $(document).ready(function() {
-    $('.like').click(function() {
+    $('body').on('click', '.like', function() {
         $.post($(this).attr('href'), $(this).serialize(), function(response) {
 
             var targetId = response.post
@@ -30,5 +30,10 @@ $(document).ready(function() {
             currentPost.find('.like').replaceWith(response.unlike);
         }, 'json');
         return false;
+
     });
+    // $('.unlike').click(function() {
+    //     console.log('Hi');
+    //     return false;
+    // });
 });
