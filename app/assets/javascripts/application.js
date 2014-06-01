@@ -20,7 +20,6 @@
 $(document).ready(function() {
     $('.like').click(function() {
         $.post($(this).attr('href'), $(this).serialize(), function(response) {
-            console.log(response);
 
             var targetId = response.post
             var currentPost = $('.col-md-4[data-id=' + targetId + ']')
@@ -28,7 +27,7 @@ $(document).ready(function() {
             var template = $('#likes-template').html();
 
             currentPost.find('.likes').append(response.user + ", ");
-            $('.like').text('.unlike');
+            currentPost.find('.like').replaceWith(response.unlike);
         }, 'json');
         return false;
     });
