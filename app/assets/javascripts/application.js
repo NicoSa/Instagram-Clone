@@ -19,7 +19,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-    var connection = new WebSocketRails('localhost:3000/websocket');
+    var connection = new WebSocketRails(window.location.host + '/websocket');
     channel1 = connection.subscribe('likes');
     channel1.bind('like', function(post) {
         console.log(post);
