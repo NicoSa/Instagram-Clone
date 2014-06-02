@@ -19,7 +19,22 @@
 //= require_tree .
 
 $(document).ready(function() {
+    var connection = new WebSocketRails('localhost:3000/websocket');
+    channel1 = connection.subscribe('likes');
+    channel1.bind('like', function(post) {
+        console.log(post);
+        var postElem = $('.post[data-id=' + post.id + '] .btn-like');
+        console.log(postElem);
+        postElem.text('♥' + post.new_like_count);
+    });
 
+    channel2 = connection.subscribe('unlikes');
+    channel2.bind('unlike', function(post) {
+        console.log(post);
+        var postElem = $('.post[data-id=' + post.id + '] .btn-like');
+        console.log(postElem);
+        postElem.text('♥' + post.new_like_count);
+    });
 
     $('body').on('click', '.like', function(event) {
         event.preventDefault();
