@@ -17,7 +17,7 @@ describe 'Hate' do
   it 'doesn´t die when you log out' do
   	logout
   	visit('/')
-  	expect(page).to have_content('Login')
+  	expect(page).to have_button('Login')
   end
 
   # it 'can´t be added to a post twice' do

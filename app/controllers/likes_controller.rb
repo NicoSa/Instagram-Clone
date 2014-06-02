@@ -5,6 +5,7 @@ class LikesController < ApplicationController
   end
 
   def create
+    raise "Hello " unless current_user
     @post = Post.find(params[:post_id])
     @like = Like.new 
     @post.likes << @like

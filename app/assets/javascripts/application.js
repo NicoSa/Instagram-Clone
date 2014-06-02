@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree .
 //= require mustache
+//= require websocket_rails/main
+//= require_tree .
 
 $(document).ready(function() {
     $('body').on('click', '.like', function(event) {
@@ -49,4 +50,4 @@ $(document).ready(function() {
 
     });
 
-});
+}); //= require websocket_rails/main

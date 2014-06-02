@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
-
+gem 'thin'
+gem 'websocket-rails'
 gem 'aws-sdk'
 gem 'bootstrap-sass'	
 # Use ActiveModel has_secure_password
@@ -44,6 +45,8 @@ gem 'bootstrap-sass'
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
+	gem 'poltergeist'
+	gem 'database_cleaner'
 end
 
 #im a chaaaaange

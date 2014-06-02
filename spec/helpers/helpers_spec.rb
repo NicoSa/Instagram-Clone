@@ -9,7 +9,7 @@ end
 def add_comment(comment="")
   visit('/')
   fill_in 'Comment', with: "#{comment}"
-  click_on('Add Comment')
+  click_on('Post')
   expect(page).to have_content("#{comment}")
 end
 
