@@ -18,6 +18,7 @@ class LikesController < ApplicationController
     flash[:notice] = "Record has been deleted already"
   ensure
     if @like.save!
+      # WebsocketRails[:likes].trigger 'new', { id: @post.id, new_like_count: @post.likes.count }
       render 'create', formats: [:json]
     else
       redirect_to('/')
