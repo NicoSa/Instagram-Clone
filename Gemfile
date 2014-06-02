@@ -26,10 +26,18 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
+
 gem 'thin'
+
 gem 'websocket-rails'
 gem 'aws-sdk'
-gem 'bootstrap-sass'	
+gem 'bootstrap-sass'
+
+group :production do
+  gem 'rails_12factor'
+
+  gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,10 +51,10 @@ gem 'bootstrap-sass'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-	gem 'rspec-rails'
-	gem 'capybara'
-	gem 'poltergeist'
-	gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 #im a chaaaaange
