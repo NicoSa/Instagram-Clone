@@ -34,8 +34,9 @@ $(document).ready(function() {
             currentPost.find('.like').replaceWith(response.unlike);
         }, 'json');
     });
-    $('body').on('click', '.unlike', function() {
-
+    $('body').on('click', '.unlike', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         $.ajax({
             url: $(this).attr('href'),
             type: 'DELETE',
@@ -46,8 +47,6 @@ $(document).ready(function() {
                 currentPost.find('.unlike').replaceWith(response.like);
             }
         });
-        return false;
-
     });
 
 });
