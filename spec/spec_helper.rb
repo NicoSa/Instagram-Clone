@@ -10,6 +10,11 @@ require "database_cleaner"
 
 Capybara.javascript_driver = :poltergeist
 
+Capybara.server do |app, port|
+  require 'rack/handler/thin'
+  Rack::Handler::Thin.run(app, :Port => port)
+end
+
 include Warden::Test::Helpers
 Warden.test_mode!
 AWS.stub!

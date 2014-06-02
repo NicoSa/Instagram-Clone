@@ -21,6 +21,7 @@
 $(document).ready(function() {
     $('body').on('click', '.like', function(event) {
         event.preventDefault();
+        event.stopPropagation();
         $.post($(this).attr('href'), $(this).serialize(), function(response) {
 
             var targetId = response.post
@@ -32,10 +33,9 @@ $(document).ready(function() {
             currentPost.find('.likes').append(output);
             currentPost.find('.like').replaceWith(response.unlike);
         }, 'json');
-        return false;
-
     });
     $('body').on('click', '.unlike', function() {
+
         $.ajax({
             url: $(this).attr('href'),
             type: 'DELETE',
@@ -50,4 +50,4 @@ $(document).ready(function() {
 
     });
 
-}); //= require websocket_rails/main
+});
