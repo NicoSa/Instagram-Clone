@@ -1,5 +1,5 @@
 <template id="likes-template">
-{{ like }}
+<div class="each-likes" data-id="{{ user }}">{{ user }}</div>
 </template>
 
 <div class="col-md-4 post" data-id="<%= post.id %>">
@@ -18,9 +18,9 @@
 			
 	<% if user_signed_in? %>
 			<% if user_likes?(post) %>
-				<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), method: :delete, 	class:'btn btn-info unlike' %>
+				<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), class:'btn btn-info unlike' %>
 			<% else %>
-				<%= link_to "Like", post_likes_path(post), method: :post, class:'btn btn-info like'%>
+				<%= link_to "Like", post_likes_path(post), class:'btn btn-info like'%>
 			<% end %>
 	<% end %>
 	
@@ -35,7 +35,7 @@
 					Who liked this? 
 					<div class="likes">
 					<% post.likes.each do |like| %>
-						<%= like.user.email %> 			
+					<div class="each-likes" data-id="<%= like.user.email %>"><%= like.user.email %> </div>		
 					<% end %>
 					</div>
 					<br>
