@@ -33,7 +33,18 @@ $(document).ready(function() {
 
     });
     $('body').on('click', '.unlike', function() {
-        console.log('Hi');
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'DELETE',
+            success: function(response) {
+                var targetId = response.post;
+                var currentPost = $(".post[data-id=" + targetId + "]");
+
+                currentPost.find('.unlike').replaceWith(response.like);
+            }
+        });
         return false;
+
     });
+
 });

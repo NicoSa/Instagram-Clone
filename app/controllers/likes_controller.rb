@@ -24,11 +24,13 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
+
     @like = current_user.likes.find(params[:id])
     @like.destroy!
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a like that is not yours!"
   ensure
-    redirect_to('/')
+    render 'destroy', formats: [:json]
   end
 end
