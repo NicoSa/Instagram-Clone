@@ -19,6 +19,8 @@
 //= require_tree .
 
 $(document).ready(function() {
+
+
     $('body').on('click', '.like', function(event) {
         event.preventDefault();
         event.stopPropagation();

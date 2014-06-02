@@ -18,7 +18,7 @@ class LikesController < ApplicationController
     flash[:notice] = "Record has been deleted already"
   ensure
     if @like.save!
-      # WebsocketRails[:likes].trigger 'new', { id: @post.id, new_like_count: @post.likes.count }
+      WebsocketRails[:likes].trigger 'new', { id: @post.id, new_like_count: @post.likes.count }
       render 'create', formats: [:json]
     else
       redirect_to('/')
@@ -33,6 +33,7 @@ class LikesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a like that is not yours!"
   ensure
+    WebsocketRails[:unlikes].trigger 'unlike', {id: @post.id, new_like_count: @post.likes.count}
     render 'destroy', formats: [:json]
   end
 end

@@ -32,7 +32,7 @@
 			<% end %>
 	<% end %>
 	<hr>
-					Who liked this? 
+					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>Who liked this? 
 					<div class="likes">
 					<% post.likes.each do |like| %>
 					<div class="each-likes" data-id="<%= like.user.email %>"><%= like.user.email %> </div>		
