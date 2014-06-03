@@ -53,12 +53,12 @@ describe 'Likes', js: true do
   	expect(page).to_not have_link('Like')
   end
 
-  xit 'shows number of likes' do
+  it 'shows number of likes' do
     add_post('Hooray')
     click_on('Like')
     logout
     login_as @sroop
     click_on('Like')
-    expect(page).to have_content('♥ 2')
+    expect(page).to have_link('♥2')
   end
 end
