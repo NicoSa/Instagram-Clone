@@ -34,6 +34,7 @@
 			<% end %>
 	<% end %>
 	<hr>
+	<%= link_to "Buy", new_post_charge_path(post), class:'btn btn-lg btn-default' %>
 					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>Who liked this? 
 					<div class="likes">
 					<% post.likes.each do |like| %>

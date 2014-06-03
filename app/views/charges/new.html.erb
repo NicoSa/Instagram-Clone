@@ -1,12 +1,12 @@
-<%= form_tag charges_path do %>
+<%= form_tag post_charges_path(@post) do %>
   <article>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>Amount: 1,000,000 GBP</span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
           data-description="A month's subscription"
-          data-amount="500"></script>
+          data-amount="2000"></script>
 <% end %>

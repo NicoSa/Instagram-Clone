@@ -2,13 +2,12 @@ require 'spec_helper'
 
 describe 'order page' do
 
-
   context 'logged in as admin' do
 
     before do
       @admin = Admin.new(email: "nico@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
       @user = User.new(email: "user@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
-      @post = Post.new(comment: "Pizza")
+      @post = Post.create(comment: "Pizza")
       login_as @admin, scope: :admin
     end
 
@@ -34,4 +33,26 @@ describe 'order page' do
     end
   end
 
-end
+  context 'logged in as user' do
+
+    before do
+      @user = User.new(email: "user@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
+      @post = Post.create(comment: "Pizza")
+
+      login_as @user
+    end
+
+    it 'shows buy button' do
+      visit('/')
+      expect(page).to have_link('Buy')
+    end
+
+    it 'takes you to charges page when you click the Buy button' do
+      visit('/')
+      click_on('Buy')
+      expect(current_path).to eq(new_post_charge_path(@post))
+    end
+
+
+    end
+  end
