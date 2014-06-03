@@ -1,11 +1,13 @@
 Instagram-Clone
 ----
 We´re creating an Instagram clone based on Ruby on Rails in Week 9 at Makers Academy London.
-
+![](app/assets/images/pizzaposer.png)
 Objectives of exercise
 ----
-Practicing setting up a new app in a Ruby on Rails environment.
-
+Practicing setting up a new app in a Ruby on Rails environment including everything from User, Admin-functions to a payment and mailing system.
+Heroku
+----
+[Pizza Poser on Heroku]
 Technologies used
 ----
 - Ruby
@@ -19,6 +21,14 @@ Technologies used
 - Bootstrap
 - Git 
 - Heroku
+- Sendgrid
+- Actionmailer
+- Stripe
+- Websockets
+- Devise
+- jBuilder
+- Javascript
+- AJAX
 
 How to run it
 ----
@@ -38,8 +48,11 @@ rspec
 
 Pairing Partners
 ----
-[Sroop]
+[Sroop],[Will]
 
+
+[Will]:https://github.com/willhall88
 [Sroop]:https://github.com/sroop
 [Devise]:https://github.com/plataformatec/devise
 [Paperclip]:https://github.com/thoughtbot/paperclip
+[Pizza Poser on Heroku]:http://pizza-poser.herokuapp.com/
