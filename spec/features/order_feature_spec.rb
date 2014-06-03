@@ -7,12 +7,21 @@ describe 'order page' do
 
     before do
       @admin = Admin.new(email: "nico@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
+      @user = User.new(email: "user@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
+      @post = Post.new(comment: "Pizza")
       login_as @admin, scope: :admin
     end
 
     it 'says no orders when there are no orders' do
       visit('/orders')
       expect(page).to have_content "Currently no orders!"
+    end
+
+    it 'and one order has been placed' do
+      Order.create(user: @user, post: @post)
+      visit('/orders')
+      expect(page).to have_content('user@nicosaueressig.de')
+      expect(page).to have_content('Pizza')
     end
 
   end
@@ -24,4 +33,5 @@ describe 'order page' do
       expect(current_path).to eq('/admins/sign_in')
     end
   end
+
 end

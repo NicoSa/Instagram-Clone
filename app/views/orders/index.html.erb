@@ -1,1 +1,7 @@
-Currently no orders!
+<% if @orders.any? %>
+	<% @orders.each do |order| %>
+		<%= order.user.email %><%= order.post.comment %>
+	<% end %>
+<% else %>
+	Currently no orders!
+<% end %>

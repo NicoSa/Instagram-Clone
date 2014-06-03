@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :hates
   has_many :comments
+  has_many :orders
 end
