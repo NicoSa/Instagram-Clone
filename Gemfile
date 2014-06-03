@@ -59,6 +59,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'capybara-email'
 end
 
 #im a chaaaaange

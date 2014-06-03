@@ -21,6 +21,7 @@ class ChargesController < ApplicationController
 		)
 
 		Order.create(user: current_user, post: @post)
+		#not the ideal way to put email send method
 		flash[:notice] = "Thanks for your order"
 		redirect_to('/posts')
 
