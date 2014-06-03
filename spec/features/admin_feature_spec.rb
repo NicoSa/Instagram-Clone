@@ -1,8 +1,8 @@
-# require 'spec_helper'
+require 'spec_helper'
 
-# describe 'admins' do
+describe 'admins' do
 	
-# 	it 'cannot sign up' do
-# 		expect{ visit '/admins/sign_up'}.to raise_error
-# 	end
-# end
+	it 'cannot sign up' do
+		expect{ visit '/admins/sign_up'}.to raise_error
+	end
+end
