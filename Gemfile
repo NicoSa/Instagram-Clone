@@ -30,8 +30,12 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'thin'
 
 gem 'websocket-rails'
+
 gem 'aws-sdk'
+
 gem 'bootstrap-sass'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :production do
   gem 'rails_12factor'
@@ -54,6 +58,7 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 #im a chaaaaange

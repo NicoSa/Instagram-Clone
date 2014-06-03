@@ -45,7 +45,7 @@ describe 'Hate' do
   end
 
   it 'hides Hate button when picture is hated for a user' do
-  	add_post('DIIIIE')
+    add_post('DIIIIE')
   	click_on('Hate')
   	expect(page).to have_content('Unhate')
   	expect(page).to_not have_content('Hate')

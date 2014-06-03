@@ -8,11 +8,13 @@
     <h3 class="panel-title"><%= post.comment %></h3>
   </div>
   <div class="panel-body">
-   
+   	<% if post.picture.exists? %>
 		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
-				<% post.tags.each do |tag| %>
-					<%= link_to tag.name, tag_path(tag), class:'tags-render' %>
-				<% end %>
+	<% end %>
+
+		<% post.tags.each do |tag| %>
+			<%= link_to tag.name, tag_path(tag), class:'tags-render' %>
+		<% end %>
 
 		<hr>
 			
