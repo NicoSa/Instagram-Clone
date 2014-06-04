@@ -59,22 +59,18 @@ describe 'order page' do
   describe 'order emails' do
 
     before do
+      clear_emails
       @admin = Admin.new(email: "nico@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
       @user = User.new(email: "user@nicosaueressig.de", password:"12345678", password_confirmation:"12345678")
       @post = Post.create(comment: "Pizza")
       login_as @admin, scope: :admin
-      clear_emails
     end
 
 
-    it 'sends an email with the order number and name of the picture' do
-    	Order.new(user: @user, post: @post)
+    it 'sends an email with the name of the picture' do
+    	Order.create(user: @user, post: @post)
     	open_email('user@nicosaueressig.de')
     	expect(current_email).to have_content('Successfully ordered Pizza')
     end
-
-
-
-
   end
 end

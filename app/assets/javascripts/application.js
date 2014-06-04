@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require mustache
 //= require websocket_rails/main
+//= require gmaps
 //= require_tree .
 
 $(document).ready(function() {
