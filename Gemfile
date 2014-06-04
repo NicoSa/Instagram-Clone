@@ -60,6 +60,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'capybara-email'
+  gem 'better_errors'
 end
 
 #im a chaaaaange
