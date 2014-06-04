@@ -35,6 +35,7 @@ How to run it
 ```sh
 git clone git@github.com:NicoSa/Instagram-Clone.git
 cd Instagram-Clone
+mailcatcher
 bin/rails s
 ```
 open your browser and go to localhost:3000

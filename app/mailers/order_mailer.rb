@@ -3,7 +3,7 @@ class OrderMailer < ActionMailer::Base
 
   def successful_order(order)
   	@order = order
-  	mail(to: order.user.email, subject: 'Thanks for your order')
+  	mail(to: @order.user.email, subject: 'Thanks for your order')
   end
 
   # def problematic_order
