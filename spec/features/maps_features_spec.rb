@@ -7,8 +7,22 @@ describe 'Maps' do
     login_as @user
   end
 
-  it 'writes geolocation into post' do
+  it 'posts can hold a location' do
+    post = Post.create(comment: "Found amazing Pizza here", longitude: 1, latitude: 2)
 
+    expect(post.longitude).to eq 1
+    expect(post.latitude).to eq 2
+  end
+
+  it 'shows a map button for a post with location' do
+    post = Post.create(comment: "Found amazing Pizza here", longitude: 1, latitude: 2)
+    visit('/')
+    expect(page).to have_link('Map')
+  end
+
+  it 'doesn´t show a map button for a post WITHOUT location' do
+    visit('/')
+    expect(page).to_not have_link('Map')
   end
 
 end

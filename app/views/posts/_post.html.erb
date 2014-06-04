@@ -35,7 +35,11 @@
 	<% end %>
 	<hr>
 	<%= link_to "Buy", new_post_charge_path(post), class:'btn btn-lg btn-default' %>
-					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>Who liked this? 
+					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>
+					<% if !post.latitude.nil? %>
+					<div="btn btn-default btn-lg"><%= link_to "Map", '#', class: 'glyphicon glyphicon-map-marker' %></div>
+					<% end %>
+					Who liked this? 
 					<div class="likes">
 					<% post.likes.each do |like| %>
 					<div class="each-likes" data-id="<%= like.user.email %>"><%= like.user.email %> </div>		
