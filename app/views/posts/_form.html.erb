@@ -17,5 +17,6 @@ We´ve found where you are but if you like to change the location of your post -
   
   	<%= f.submit 'Add' %>
 <% end %>
-
+<input type="text" id="address" placeholder="Type Location">
+<input type="submit" class="btn btn-sm btn-default" id="submit-location-search" value="Find">
 <div id="map-posts" data-post-id="<%= @post.id %>"></div>
