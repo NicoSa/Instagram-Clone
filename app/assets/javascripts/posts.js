@@ -5,17 +5,34 @@ $(document).ready(function() {
                 //map.setCenter(position.coords.latitude, position.coords.longitude);
                 var latitude_data = position.coords.latitude;
                 var longitude_data = position.coords.longitude;
-                $('.longitude').val(longitude_data);
-                $('.latitude').val(latitude_data);
                 console.log(latitude_data);
                 console.log(longitude_data);
+                $('.longitude').val(longitude_data);
+                $('.latitude').val(latitude_data);
+                var map = new GMaps({
+                    div: '#map-posts',
+                    lat: latitude_data,
+                    lng: longitude_data,
+                    click: function(event) {
+                        console.log(event);
+                        map.removeMarkers();
+                        map.addMarker({
+                            lat: event.latLng.lat(),
+                            lng: event.latLng.lng()
+                        });
+                        $('.longitude').val(event.latLng.lat());
+                        $('.latitude').val(event.latLng.lng());
+                    }
+                });
             },
             error: function(error) {
                 alert('Geolocation failed: ' + error.message);
             },
             not_supported: function() {
                 alert("Your browser does not support geolocation");
-            },
+            }
         });
-    }
+    };
+
+
 });

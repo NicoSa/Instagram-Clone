@@ -1,3 +1,4 @@
+We´ve found where you are but if you like to change the location of your post - just click it on the map ! 
 <br><br>
 <%= form_for @post, html: { multipart: true } do |f| %>
 
@@ -16,3 +17,4 @@
   
   	<%= f.submit 'Add' %>
 <% end %>
+<div id="map-posts" data-post-id="<%= @post.id %>"></div>
