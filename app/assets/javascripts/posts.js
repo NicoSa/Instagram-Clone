@@ -5,8 +5,9 @@ $(document).ready(function() {
                 //map.setCenter(position.coords.latitude, position.coords.longitude);
                 var latitude_data = position.coords.latitude;
                 var longitude_data = position.coords.longitude;
-                console.log(latitude_data);
-                console.log(longitude_data);
+                // console.log(latitude_data);
+                // console.log(longitude_data);
+
                 $('.longitude').val(longitude_data);
                 $('.latitude').val(latitude_data);
                 var map = new GMaps({
@@ -20,9 +21,13 @@ $(document).ready(function() {
                             lat: event.latLng.lat(),
                             lng: event.latLng.lng()
                         });
-                        $('.longitude').val(event.latLng.lat());
-                        $('.latitude').val(event.latLng.lng());
+                        $('.longitude').val(event.latLng.lng());
+                        $('.latitude').val(event.latLng.lat());
                     }
+                });
+                map.addMarker({
+                    lat: latitude_data,
+                    lng: longitude_data
                 });
             },
             error: function(error) {

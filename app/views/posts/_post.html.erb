@@ -38,7 +38,7 @@
 					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>
 					<% if !post.latitude.nil? %>
 					<div class="btn btn-default btn-lg"><%= link_to "Map", post_map_path(post), class: 'glyphicon glyphicon-map-marker' %></div>
-					<% end %>
+					<% end %><br>
 					Who liked this? 
 					<div class="likes">
 					<% post.likes.each do |like| %>
