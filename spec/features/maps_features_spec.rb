@@ -25,4 +25,11 @@ describe 'Maps' do
     expect(page).to_not have_link('Map')
   end
 
+  it 'goes to a map when you click on map' do
+    post = Post.create(comment: "Found amazing Pizza here", longitude: 1, latitude: 2)
+    visit('/')
+    click_link('Map')
+    expect(page).to have_content('This is the location of this picture!')
+    expect(current_path).to eq post_map_path(post)
+  end
 end
