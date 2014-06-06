@@ -51,13 +51,16 @@
 						<%= hate.user.email %>
 					<% end %>
 					<hr>
-					<% if @comments.any? %>
-				<br><% post.comments.each do |comment| %>
-					<%= comment.comment %><br>
-				<% end %><br>
-			<% else %>
-				No Comments
-			<% end %>
+					<div class="comments-display" data-comment-id="<%= post.id %>" %>
+						<% if @comments.any? %>
+							<br><% post.comments.each do |comment| %>
+								<%= comment.comment %><br>
+							<% end %>
+
+						<% else %>
+							No Comments
+						<% end %>
+					</div><br>
 			
 				<hr>
 		<%= form_for [post, @comment] do |f| %>
@@ -65,7 +68,7 @@
 			<%= f.label :comment %>
 			<%= f.text_field :comment %>
 
-			<%= f.submit 'Post' %>
+			<%= f.submit 'Post'%>
 		<% end %>
 		<hr>
 		<% if post.user == current_user || true %>

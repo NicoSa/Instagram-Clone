@@ -37,10 +37,23 @@ $(document).ready(function() {
         postElem.text('♥' + post.new_like_count);
     });
 
+    channel3 = connection.subscribe('comments');
+    channel3.bind('new', function(post) {
+        console.log(post);
+        $('.comments-display[data-comment-id=' + post.comment.post_id + ']').append(post.comment.comment + "<br>");
+    })
+
+    $('body').on('submit', '.new_comment', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $.post($(this).attr('action'), $(this).serialize(), function(comment) {});
+    });
+
     $('body').on('click', '.like', function(event) {
         event.preventDefault();
         event.stopPropagation();
         $.post($(this).attr('href'), $(this).serialize(), function(response) {
+            console.log(response);
 
             var targetId = response.post
             var currentPost = $('.col-md-4[data-id=' + targetId + ']')
@@ -52,6 +65,7 @@ $(document).ready(function() {
             currentPost.find('.like').replaceWith(response.unlike);
         }, 'json');
     });
+
     $('body').on('click', '.unlike', function(event) {
         event.preventDefault();
         event.stopPropagation();

@@ -54,8 +54,8 @@ $(document).ready(function() {
                             lng: latlng.lng()
                         });
                     }
-                    $('.longitude').val(latlng.lat());
-                    $('.latitude').val(latlng.lng());
+                    $('.longitude').val(latlng.lng());
+                    $('.latitude').val(latlng.lat());
                 }
             });
         });
