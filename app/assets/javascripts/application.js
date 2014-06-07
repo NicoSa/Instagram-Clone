@@ -90,7 +90,7 @@ $(document).ready(function() {
             var targetId = response.post
             var currentPost = $('.col-md-4[data-id=' + targetId + ']')
 
-            var template = $('#likes-template').html();
+            var template = $('#hates-template').html();
             var output = Mustache.render(template, response)
 
             currentPost.find('.hates').append(output);

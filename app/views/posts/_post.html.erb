@@ -1,6 +1,9 @@
 <template id="likes-template">
 <div class="each-likes" data-id="{{ user }}">{{ user }}</div>
 </template>
+<template id="hates-template">
+<div class="each-hates" data-id="{{ user }}">{{ user }}</div>
+</template>
 <div class="col-md-4 post" data-id="<%= post.id %>">
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -55,8 +58,8 @@
 			Who hated this?
 			<div class="hates">
 				<% post.hates.each do |hate| %>
-					<div class="each-hates" data-id="<%= hate.user %>">
-						<%= hate.user %>
+					<div class="each-hates" data-id="<%= hate.user.email %>">
+						<%= hate.user.email %>
 					</div>
 				<% end %>
 			</div>
