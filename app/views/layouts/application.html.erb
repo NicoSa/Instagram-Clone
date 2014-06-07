@@ -5,9 +5,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    
-    <link rel="shortcut icon" href="favicon.ico" />
-
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -16,48 +13,42 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Pizza Poser</a>
         </div>
-        <% if !user_signed_in? %>
-        <div class="navbar-collapse collapse">
-              <%= form_for(User.new, as: :user, url: session_path(:user), html: {class: "navbar-form navbar-right", role:"form"}) do |f| %>
-            <div class="form-group">
-              <%= f.email_field :email, autofocus: true, placeholder:"Email" %></div>
-            <div class="form-group">
-              <%= f.password_field :password, autocomplete: "off", placeholder:"Password" %></div>
-              
-              <%= f.submit "Login", class:"btn btn-default" %>
-              <% end %>
-              <% else %>
-              <div class:"navbar-collapse collapse">  
-                <div clasS="navbar-form navbar-right">
+          <% if !user_signed_in? %>
+            <div class="navbar-collapse collapse">
+                <%= form_for(User.new, as: :user, url: session_path(:user), html: {class: "navbar-form navbar-right", role:"form"}) do |f| %>
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, placeholder:"Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "off", placeholder:"Password" %>
+              </div>
+                <%= f.submit "Login", class:"btn btn-default" %>
+            <% end %>
+          <% else %>
+            <div class:"navbar-collapse collapse">
+              <div clasS="navbar-form navbar-right">
                 <%= link_to "New Post", new_post_path, class: "btn btn-default" %>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
-                </div>
               </div>
-              <% end %>
-              
-            </div><!--/.navbar-collapse -->
-          </div>
+            </div>
+          <% end %>
+          
         </div>
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        
-        <div class="container">
-          
-          
-          
-          </div> <!-- /container -->
-        
-          <h1><%= alert %></h1>
-          <h1><%= notice %></h1>
-          <%= yield %>
-          <footer>
-            <p>&copy; NicoAcademy  2014</p>
-          </footer>
-        </body>
-      </html>
+      </div>
+    </div>
+    
+    <div class="container">
+    </div>
+    
+    <h1><%= alert %></h1>
+    <h1><%= notice %></h1>
+    <%= yield %>
+
+    <footer>
+      <p>&copy; NicoAcademy  2014</p>
+    </footer>
+  </body>
+</html>

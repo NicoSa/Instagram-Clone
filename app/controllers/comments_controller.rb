@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       new_comment.user = current_user
       new_comment.save
       # redirect_to('/')
-      WebsocketRails[:comments].trigger 'new', { comment: new_comment }
+      WebsocketRails[:comments].trigger 'new', { comment: new_comment, user: new_comment.user }
       render nothing: true
     else
       flash[:notice] = "FUCK YOU!"

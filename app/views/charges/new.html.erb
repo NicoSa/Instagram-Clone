@@ -1,12 +1,17 @@
 <%= form_tag post_charges_path(@post) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: 1,000,000 GBP</span>
-    </label>
-  </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
-          data-description="A month's subscription"
-          data-amount="2000"></script>
+<article>
+
+	<label class="amount">
+		<span>Amount: 1,000,000 GBP</span>
+	</label>
+	
+</article>
+
+	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+	data-description="A month's subscription"
+	data-amount="2000">
+	</script>
+
 <% end %>

@@ -1,81 +1,85 @@
 <template id="likes-template">
 <div class="each-likes" data-id="{{ user }}">{{ user }}</div>
 </template>
-
 <div class="col-md-4 post" data-id="<%= post.id %>">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= post.comment %></h3>
-  </div>
-  <div class="panel-body">
-   	<% if post.picture.exists? %>
-		<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
-	<% end %>
-
-		<% post.tags.each do |tag| %>
-			<%= link_to tag.name, tag_path(tag), class:'tags-render' %>
-		<% end %>
-
-		<hr>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= post.comment %></h3>
+		</div>
+		<div class="panel-body">
+			<% if post.picture.exists? %>
+				<%= image_tag post.picture.url(:medium), class: 'uploaded-pic' %>
+			<% end %>
+			<% post.tags.each do |tag| %>
+				<%= link_to tag.name, tag_path(tag), class:'tags-render' %>
+			<% end %>
+			<hr>
 			
-	<% if user_signed_in? %>
-			<% if user_likes?(post) %>
-				<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), class:'btn btn-info unlike' %>
-			<% else %>
-				<%= link_to "Like", post_likes_path(post), class:'btn btn-info like'%>
+			<% if user_signed_in? %>
+				<% if user_likes?(post) %>
+					<%= link_to "Unlike", post_like_path(post, user_likes_for(post)), class:'btn btn-info unlike' %>
+				<% else %>
+					<%= link_to "Like", post_likes_path(post), class:'btn btn-info like'%>
+				<% end %>
 			<% end %>
-	<% end %>
-	
-	<% if user_signed_in? %>
-			<% if user_hates?(post) %>
-				<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete, class:'btn btn-warning unhate'%>
-			<% else %>
-				<%= link_to "Hate", post_hates_path(post), method: :post, class:'btn btn-warning hate' %>
+			
+			<% if user_signed_in? %>
+				<% if user_hates?(post) %>
+					<%= link_to "Unhate", post_hate_path(post, user_hates_for(post)), method: :delete, class:'btn btn-warning unhate'%>
+				<% else %>
+					<%= link_to "Hate", post_hates_path(post), method: :post, class:'btn btn-warning hate' %>
+				<% end %>
 			<% end %>
-	<% end %>
-	<hr>
-	<%= link_to "Buy", new_post_charge_path(post), class:'btn btn-lg btn-default' %>
-					<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>
-					<% if !post.latitude.nil? %>
-					<div class="btn btn-default btn-lg"><%= link_to "Map", post_map_path(post), class: 'glyphicon glyphicon-map-marker' %></div>
-					<% end %><br>
-					Who liked this? 
-					<div class="likes">
-					<% post.likes.each do |like| %>
-					<div class="each-likes" data-id="<%= like.user.email %>"><%= like.user.email %> </div>		
-					<% end %>
+			<hr>
+
+			<%= link_to "Buy", new_post_charge_path(post), class:'btn btn-lg btn-default' %>
+			<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>
+
+			<% if !post.latitude.nil? %>
+				<div class="btn btn-default btn-lg">
+					<%= link_to "Map", post_map_path(post), class: 'glyphicon glyphicon-map-marker' %>
+				</div>
+			<% end %>
+			<br>
+
+			Who liked this?
+			<div class="likes">
+				<% post.likes.each do |like| %>
+					<div class="each-likes" data-id="<%= like.user.email %>">
+						<%= like.user.email %>
 					</div>
-					<br>
-					Who hated this?
-					<% post.hates.each do |hate| %>
-						<%= hate.user.email %>
-					<% end %>
-					<hr>
-					<div class="comments-display" data-comment-id="<%= post.id %>" %>
-						<% if @comments.any? %>
-							<br><% post.comments.each do |comment| %>
-								<%= comment.comment %><br>
-							<% end %>
+				<% end %>
+			</div>
+			<br>
 
-						<% else %>
-							No Comments
-						<% end %>
-					</div><br>
-			
-				<hr>
-		<%= form_for [post, @comment] do |f| %>
-
-			<%= f.label :comment %>
-			<%= f.text_field :comment %>
-
-			<%= f.submit 'Post'%>
-		<% end %>
-		<hr>
-		<% if post.user == current_user || true %>
-			<%= link_to "Delete", post_path(post), method: :delete , class: 'btn btn-danger'%>
+			Who hated this?
+			<% post.hates.each do |hate| %>
+				<%= hate.user.email %>
 			<% end %>
-  </div>
-</div>
-		
-</div>
+			<hr>
+
+			<div class="comments-display" data-comment-id="<%= post.id %>" %>
+				<% if @comments.any? %>
+					<br><% post.comments.each do |comment| %>
+						<%= comment.comment %> | <%= comment.user.email %><br>
+					<% end %>
+				<% else %>
+					No Comments
+				<% end %>
+			</div>
+			<br>
 			
+			<hr>
+			<%= form_for [post, @comment] do |f| %>
+				<%= f.label :comment %>
+				<%= f.text_field :comment %>
+				<%= f.submit 'Post'%>
+			<% end %>
+
+			<hr>
+			<% if post.user == current_user || true %>
+				<%= link_to "Delete", post_path(post), method: :delete , class: 'btn btn-danger'%>
+			<% end %>
+		</div>
+	</div>
+</div>

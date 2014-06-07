@@ -40,7 +40,7 @@ $(document).ready(function() {
     channel3 = connection.subscribe('comments');
     channel3.bind('new', function(post) {
         console.log(post);
-        $('.comments-display[data-comment-id=' + post.comment.post_id + ']').append(post.comment.comment + "<br>");
+        $('.comments-display[data-comment-id=' + post.comment.post_id + ']').append(post.comment.comment + " | " + post.user.email + "<br>");
     })
 
     $('body').on('submit', '.new_comment', function(event) {
