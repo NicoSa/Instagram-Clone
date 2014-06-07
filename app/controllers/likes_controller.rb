@@ -27,7 +27,6 @@ class LikesController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
-
     @like = current_user.likes.find(params[:id])
     @like.destroy!
   rescue ActiveRecord::RecordNotFound

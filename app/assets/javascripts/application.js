@@ -81,6 +81,37 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('click', '.hate', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $.post($(this).attr('href'), $(this).serialize(), function(response) {
+            console.log(response);
+
+            var targetId = response.post
+            var currentPost = $('.col-md-4[data-id=' + targetId + ']')
+
+            var template = $('#likes-template').html();
+            var output = Mustache.render(template, response)
+
+            currentPost.find('.hates').append(output);
+            currentPost.find('.hate').replaceWith(response.unhate);
+        }, 'json');
+    });
+
+    $('body').on('click', '.unhate', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'DELETE',
+            success: function(response) {
+                var targetId = response.post;
+                var currentPost = $(".post[data-id='" + targetId + "']");
+                currentPost.find(".each-hates[data-id='" + response.user.email + "']").remove();
+                currentPost.find('.unhate').replaceWith(response.hate);
+            }
+        });
+    });
     // new GMaps({
     //     div: '#map',
     //     lat: -12.043333,

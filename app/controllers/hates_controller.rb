@@ -1,5 +1,9 @@
 class HatesController < ApplicationController
 
+  def index
+    @hates = Hate.all
+  end
+
   def create
     @post = Post.find(params[:post_id])
     @hate = Hate.new
@@ -13,15 +17,16 @@ class HatesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Record has been deleted already"
   ensure
-    redirect_to('/posts')
+    render 'create', formats: [:json]
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
   	@hate = current_user.hates.find(params[:id])
     @hate.destroy!
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a hate that is not yours!"
   ensure
-    redirect_to('/')
+    render 'destroy', formats: [:json]
   end
 end

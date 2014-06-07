@@ -53,9 +53,13 @@
 			<br>
 
 			Who hated this?
-			<% post.hates.each do |hate| %>
-				<%= hate.user.email %>
-			<% end %>
+			<div class="hates">
+				<% post.hates.each do |hate| %>
+					<div class="each-hates" data-id="<%= hate.user %>">
+						<%= hate.user %>
+					</div>
+				<% end %>
+			</div>
 			<hr>
 
 			<div class="comments-display" data-comment-id="<%= post.id %>" %>
