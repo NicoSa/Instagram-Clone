@@ -40,9 +40,7 @@
 			<%= link_to "☁ #{post.hates.count}", '#', class:'btn btn-lg btn-default btn-hate' %>
 
 			<% if !post.latitude.nil? %>
-				<div class="btn btn-default btn-lg">
-					<%= link_to "Map", post_map_path(post), class: 'glyphicon glyphicon-map-marker' %>
-				</div>
+					<%= link_to "Map", post_map_path(post), class:'glyphicon glyphicon-map-marker btn btn-lg btn-default btn-hate' %>
 			<% end %>
 			<br>
 
