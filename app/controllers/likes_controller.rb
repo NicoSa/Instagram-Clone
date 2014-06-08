@@ -7,7 +7,7 @@ class LikesController < ApplicationController
   def create
     raise "Hello " unless current_user
     @post = Post.find(params[:post_id])
-    @like = Like.new 
+    @like = Like.new
     @post.likes << @like
     @like.user = current_user
     @like.save!
@@ -32,7 +32,7 @@ class LikesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a like that is not yours!"
   ensure
-    WebsocketRails[:unlikes].trigger 'unlike', {id: @post.id, new_like_count: @post.likes.count}
+    WebsocketRails[:likes].trigger 'like', { id: @post.id, new_like_count: @post.likes.count }
     render 'destroy', formats: [:json]
   end
 end
