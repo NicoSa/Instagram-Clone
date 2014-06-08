@@ -36,7 +36,8 @@
 			<hr>
 
 			<%= link_to "Buy", new_post_charge_path(post), class:'btn btn-lg btn-default' %>
-			<%= link_to "❤ #{post.likes.count}", '#', class: 'btn btn-lg btn-default btn-like' %>
+			<%= link_to "❤ #{post.likes.count}", '#', class:'btn btn-lg btn-default btn-like' %>
+			<%= link_to "☁ #{post.hates.count}", '#', class:'btn btn-lg btn-default btn-hate' %>
 
 			<% if !post.latitude.nil? %>
 				<div class="btn btn-default btn-lg">
@@ -84,7 +85,7 @@
 			<% end %>
 
 			<hr>
-			<% if post.user == current_user || true %>
+			<% if post.user == current_user || true && user_signed_in? %>
 				<%= link_to "Delete", post_path(post), method: :delete , class: 'btn btn-danger'%>
 			<% end %>
 		</div>

@@ -17,16 +17,18 @@ class HatesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Record has been deleted already"
   ensure
+    WebsocketRails[:hates].trigger 'hate', { id: @post.id, new_hate_count: @post.hates.count }
     render 'create', formats: [:json]
   end
 
   def destroy
     @post = Post.find(params[:post_id])
-  	@hate = current_user.hates.find(params[:id])
+    @hate = current_user.hates.find(params[:id])
     @hate.destroy!
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a hate that is not yours!"
   ensure
+    WebsocketRails[:unhates].trigger 'unhate', {id: @post.id, new_hate_count: @post.hates.count}
     render 'destroy', formats: [:json]
   end
 end
