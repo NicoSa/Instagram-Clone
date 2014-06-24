@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
       WebsocketRails[:comments].trigger 'new', { comment: new_comment, user: new_comment.user }
       render nothing: true
     else
-      flash[:notice] = "FUCK YOU!"
-	end
+      flash[:notice] = "Can´t create it. There was an Error!"
+    end
   end
 end

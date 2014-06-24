@@ -5,6 +5,12 @@ We´re creating an Instagram clone based on Ruby on Rails in Week 9 at Makers Ac
 Objectives of exercise
 ----
 Practicing setting up a new app in a Ruby on Rails environment including everything from User, Admin-functions to a payment and mailing system.
+
+What still needs to be done
+----
+- Polishing frontend
+- Putting some views in modals
+
 Heroku
 ----
 [Pizza Poser on Heroku]

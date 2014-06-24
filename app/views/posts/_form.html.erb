@@ -17,10 +17,11 @@
 	<%= f.hidden_field :latitude, class:"latitude" %>
   
   	<%= f.submit 'Add', class:"btn btn-sm btn-default" %>
+
 <% end %>
 
 <div class="new_post">
-<input type="text" id="address" placeholder="Type Location">
-<input type="submit" class="btn btn-sm btn-default" id="submit-location-search" value="Find">
+	<input type="text" id="address" placeholder="Type Location">
+	<input type="submit" class="btn btn-sm btn-default" id="submit-location-search" value="Find">
 </div>
 <div id="map-posts" data-post-id="<%= @post.id %>"></div>

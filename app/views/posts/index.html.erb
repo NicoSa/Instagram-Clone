@@ -13,16 +13,22 @@
         <h4 class="modal-title">Signup</h4>
       </div>
       <div class="modal-body">
-		<%= form_for(User.new, as: :user, url: registration_path(:user)) do |f| %>
+		  <%= form_for(User.new, as: :user, url: registration_path(:user)) do |f| %>
 
-		  <div><%= f.label :email %><br />
-		  <%= f.email_field :email, autofocus: true, required: true%></div>
+		  <div>
+        <%= f.label :email %><br />
+		    <%= f.email_field :email, autofocus: true, required: true%>
+      </div>
 
-		  <div><%= f.label :password %><br />
-		    <%= f.password_field :password, autocomplete: "off" %></div>
+		  <div>
+        <%= f.label :password %><br />
+		    <%= f.password_field :password, autocomplete: "off" %>
+      </div>
 
-		  <div><%= f.label :password_confirmation %><br />
-		    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+		  <div>
+        <%= f.label :password_confirmation %><br />
+		    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
 
     </div>
       <div class="modal-footer">

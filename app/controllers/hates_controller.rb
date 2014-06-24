@@ -8,7 +8,6 @@ class HatesController < ApplicationController
     @post = Post.find(params[:post_id])
     @hate = Hate.new
     @post.hates << @hate
-    # @hate = Hate.new(post: @post) alternative version of line 6
     @hate.user = current_user
     @hate.save!
     flash[:notice] = "Thanks for the hate!"

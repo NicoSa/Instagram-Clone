@@ -7,19 +7,11 @@ $(document).ready(function() {
                 div: '#map',
                 lat: post.latitude,
                 lng: post.longitude,
-
-                //     console.log(event);
-                //     map.removeMarkers();
-                //     map.addMarker({
-                //         lat: event.latLng.lat(),
-                //         lng: event.latLng.lng()
-                //     });
-                // }
             });
             map.addMarker({
                 lat: post.latitude,
                 lng: post.longitude
-            }); // click: function(event) {
+            });
 
         });
     }
