@@ -29,6 +29,14 @@ $(document).ready(function() {
         postElem.text('♥' + post.new_like_count);
     });
 
+    channel2 = connection.subscribe('unlikes');
+    channel2.bind('unlike', function(post) {
+        console.log(post);
+        var postElem = $('.post[data-id=' + post.id + '] .btn-like');
+        console.log(postElem);
+        postElem.text('♥' + post.new_like_count);
+    });
+
     var connection = new WebSocketRails(window.location.host + '/websocket');
     channel3 = connection.subscribe('hates');
     channel3.bind('hate', function(post) {
@@ -38,10 +46,17 @@ $(document).ready(function() {
         postElem.text('☁' + post.new_hate_count);
     });
 
+    channel4 = connection.subscribe('unhates');
+    channel4.bind('unhate', function(post) {
+        console.log(post);
+        var postElem = $('.post[data-id=' + post.id + '] .btn-hate');
+        console.log(postElem);
+        postElem.text('☁' + post.new_hate_count);
+    });
+
     channel3 = connection.subscribe('comments');
     channel3.bind('new', function(post) {
         console.log(post);
-        $('.no-comments[data-comment-id=' + post.comment.post_id + ']').remove();
         $('.comments-display[data-comment-id=' + post.comment.post_id + ']').append(post.comment.comment + " | " + post.user.email + "<br>");
     })
 

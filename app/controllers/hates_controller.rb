@@ -27,7 +27,7 @@ class HatesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Can´t delete a hate that is not yours!"
   ensure
-    WebsocketRails[:hates].trigger 'hate', { id: @post.id, new_hate_count: @post.hates.count }
+    WebsocketRails[:unhates].trigger 'unhate', {id: @post.id, new_hate_count: @post.hates.count}
     render 'destroy', formats: [:json]
   end
 end
