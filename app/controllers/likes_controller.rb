@@ -11,7 +11,6 @@ class LikesController < ApplicationController
     @post.likes << @like
     @like.user = current_user
     @like.save!
-    flash[:notice] = "Thanks for the like!"
   rescue ActiveRecord::RecordInvalid
     flash[:notice] = "Can´t touch this, also you need to be logged in!"
   rescue ActiveRecord::RecordNotFound

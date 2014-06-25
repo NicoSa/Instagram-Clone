@@ -41,9 +41,24 @@
     
     <div class="container">
     </div>
+
+    <% unless alert.blank? %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless notice.blank? %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
     
-    <h1><%= alert %></h1>
-    <h1><%= notice %></h1>
+   
     <%= yield %>
 
     <footer>
