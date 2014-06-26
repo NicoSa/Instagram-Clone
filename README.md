@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/NicoSa/Pizza-Poser.svg?branch=master)](https://travis-ci.org/NicoSa/Pizza-Poser)
 Instagram-Clone
 ----
 We´re creating an Instagram clone based on Ruby on Rails in Week 9 at Makers Academy London.
