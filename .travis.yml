@@ -6,12 +6,12 @@ addons:
   postgresql: "9.3"
 
 before_script:
-  - psql -c 'create database Instagram_test;' -U postgres
+  - psql -c 'create database instagram_test;' -U postgres
   - cp config/secrets.yml.travis config/secrets.yml
   - bundle exec rake db:migrate
 
 test:
   adapter: postgresql
-  database: Instagram_test
+  database: instagram_test
   username: postgres
 
