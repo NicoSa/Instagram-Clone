@@ -32,7 +32,6 @@ Technologies used
 - Actionmailer
 - Stripe
 - Websockets
-- Devise
 - jBuilder
 - Javascript
 - AJAX
